@@ -88,3 +88,66 @@ Ele ofecere os seguintes atributos:
     >>> carro.calcular_direcao()
     'Oeste'
 """
+
+
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        if self.velocidade < 2:
+            self.velocidade = 0
+        else:
+            self.velocidade -= 2
+
+
+class Direcao:
+    def __init__(self, valor='Norte'):
+        self.valor = valor
+
+    def girar_a_direita(self):
+        coordenadas = {
+            'Norte': 'Leste',
+            'Leste': 'Sul',
+            'Sul': 'Oeste',
+            'Oeste': 'Norte'
+        }
+
+        self.valor = coordenadas[self.valor]
+
+    def girar_a_esquerda(self):
+        coordenadas = {
+            'Norte': 'Oeste',
+            'Oeste': 'Sul',
+            'Sul': 'Leste',
+            'Leste': 'Norte'
+        }
+
+        self.valor = coordenadas[self.valor]
+
+
+class Carro:
+    def __init__(self, direcao, motor):
+        self.direcao = direcao
+        self.motor = motor
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_a_esquerda()
