@@ -25,9 +25,13 @@ class Pessoa:
         return f'Nome da classe: {cls} - Olhos: {cls.olhos}'
 
 
+class Homem(Pessoa):  # Herança simples
+    pass
+
+
 if __name__ == '__main__':
-    miguel = Pessoa(nome='Miguel', idade=4)
-    danilo = Pessoa(miguel, nome='Danilo', idade=30)
+    miguel = Homem(nome='Miguel', idade=4)
+    danilo = Homem(miguel, nome='Danilo', idade=30)
     print(Pessoa.cumprimentar(danilo))
     print(id(danilo))
     print(danilo.cumprimentar())
@@ -50,4 +54,8 @@ if __name__ == '__main__':
     print(Pessoa.metodo_estatico(), danilo.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(),
           danilo.nome_e_atributos_de_classe())
-    print('FIM')
+    pessoa = Pessoa()
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(danilo, Pessoa))
+    print(isinstance(danilo, Homem))
