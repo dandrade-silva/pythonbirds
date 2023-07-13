@@ -3,4 +3,11 @@
 # Exemplos: carros = Carros ou classe carro = ClasseCarro
 
 class Pessoa:
-    pass
+    # Método é uma função que pertence há uma classe, portanto, está sempre ligada a classe.
+    def cumprimentar(self):
+        return 'Olá'
+
+
+if __name__ == '__main__':
+    p = Pessoa()
+    print(p.cumprimentar())
