@@ -25,3 +25,8 @@ if __name__ == '__main__':
     print(danilo.idade)
     for filho in danilo.filhos:
         print(filho.nome)
+    danilo.sobrenome = 'Silva'  # Atributo Dinâmico: Não é uma boa prática!
+    print(danilo.sobrenome)
+    del danilo.sobrenome
+    print(danilo.__dict__)  # __dict__: contém um dicionário com os atributos da instância
+    print(miguel.__dict__)
