@@ -16,6 +16,14 @@ class Pessoa:
         # Método é uma função que pertence há uma classe.
         return f'Olá {id(self)}'
 
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'Nome da classe: {cls} - Olhos: {cls.olhos}'
+
 
 if __name__ == '__main__':
     miguel = Pessoa(nome='Miguel', idade=4)
@@ -39,3 +47,7 @@ if __name__ == '__main__':
     print(danilo.olhos)
     print(miguel.olhos)
     print(id(Pessoa.olhos), id(danilo.olhos), id(miguel.olhos))
+    print(Pessoa.metodo_estatico(), danilo.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(),
+          danilo.nome_e_atributos_de_classe())
+    print('FIM')
