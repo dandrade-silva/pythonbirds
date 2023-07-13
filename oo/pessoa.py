@@ -3,6 +3,8 @@
 # Exemplos: carros = Carros ou classe carro = ClasseCarro
 
 class Pessoa:
+    olhos = 2  # Atributo default / Atributo de classe
+
     def __init__(self, *filhos, nome=None, idade=30):
         # Atributo especial. Ele é executado quando você construi o objeto.
         # Ele também é conhecido como método construtor
@@ -28,5 +30,12 @@ if __name__ == '__main__':
     danilo.sobrenome = 'Silva'  # Atributo Dinâmico: Não é uma boa prática!
     print(danilo.sobrenome)
     del danilo.sobrenome
-    print(danilo.__dict__)  # __dict__: contém um dicionário com os atributos da instância
+    danilo.olhos = 1
+    # __dict__: contém um dicionário com os atributos da instância
+    print(danilo.__dict__)
     print(miguel.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(danilo.olhos)
+    print(miguel.olhos)
+    print(id(Pessoa.olhos), id(danilo.olhos), id(miguel.olhos))
