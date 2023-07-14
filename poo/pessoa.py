@@ -14,7 +14,7 @@ class Pessoa:
 
     def cumprimentar(self):  # Método da classe
         # Método é uma função que pertence há uma classe.
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -26,7 +26,9 @@ class Pessoa:
 
 
 class Homem(Pessoa):  # Herança simples
-    pass
+    def cumprimentar(self):
+
+        return f'{super().cumprimentar()}. Aperto de mão!'
 
 
 class Mutante(Pessoa):  # Herança simples
@@ -63,3 +65,5 @@ if __name__ == '__main__':
     print(isinstance(danilo, Pessoa))
     print(isinstance(danilo, Homem))
     print(miguel.olhos)
+    print(danilo.cumprimentar())
+    print(miguel.cumprimentar())
