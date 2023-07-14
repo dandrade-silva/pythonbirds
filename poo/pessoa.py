@@ -29,8 +29,12 @@ class Homem(Pessoa):  # Herança simples
     pass
 
 
+class Mutante(Pessoa):  # Herança simples
+    olhos = 3  # Sobrescrita de Atributo de dados
+
+
 if __name__ == '__main__':
-    miguel = Homem(nome='Miguel', idade=4)
+    miguel = Mutante(nome='Miguel', idade=4)
     danilo = Homem(miguel, nome='Danilo', idade=30)
     print(Pessoa.cumprimentar(danilo))
     print(id(danilo))
@@ -46,7 +50,6 @@ if __name__ == '__main__':
     # __dict__: contém um dicionário com os atributos da instância
     print(danilo.__dict__)
     print(miguel.__dict__)
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(danilo.olhos)
     print(miguel.olhos)
@@ -59,3 +62,4 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(danilo, Pessoa))
     print(isinstance(danilo, Homem))
+    print(miguel.olhos)
