@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from fase import Fase, Ponto, EM_ANDAMENTO, VITORIA, DERROTA
+from atores import (Obstaculo, Porco, PassaroVermelho, PassaroAmarelo,
+                    DESTRUIDO, ATIVO, DuploLancamentoExcecao)
+from placa_grafica_tkinter import rodar_fase
 import os
 import sys
 from os import path
@@ -8,15 +12,10 @@ from unittest.case import TestCase
 project_dir = path.dirname(__file__)
 project_dir = path.join('..')
 sys.path.append(project_dir)
-from placa_grafica_tkinter import rodar_fase
 
 project_dir = os.path.join(os.path.dirname(__file__), '..')
 project_dir = os.path.normpath(project_dir)
 sys.path.append(project_dir)
-
-from atores import (Obstaculo, Porco, PassaroVermelho, PassaroAmarelo,
-                    DESTRUIDO, ATIVO, DuploLancamentoExcecao)
-from fase import Fase, Ponto, EM_ANDAMENTO, VITORIA, DERROTA
 
 
 class AtorFake:
@@ -172,8 +171,7 @@ class FaseTestes(TestCase):
         self.assertFalse(passaros[1].foi_lancado())
         fase.lancar(90, 1)
         fase.lancar(45, 3)
-        fase.lancar(31,
-                    5)  # testando que lançar passaros depios de todos
+        fase.lancar(31, 5)  # testando que lançar passaros depois de todos
         # lançados não causa erro
 
         self.assertTrue(passaros[0].foi_lancado())
