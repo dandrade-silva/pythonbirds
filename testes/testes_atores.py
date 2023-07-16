@@ -169,6 +169,7 @@ class PorcoTestes(TestCase):
         self.assertEqual('@', porco.caracter())
         outro_ator_na_mesma_posicao = Ator()
         porco.colidir(outro_ator_na_mesma_posicao)
+        # Alterei de + para ' '. Quero que ele suma da fase
         self.assertEqual('+', porco.caracter())
 
 
@@ -192,11 +193,11 @@ class PassaroBaseTests(TestCase):
         """
         x_calculado, y_calculado = passaro.calcular_posicao(tempo)
         self.assertEqual(x_esperado, round(x_calculado),
-                         'valor real de x = %s' % x_calculado)
+                         f'valor real de x = {x_calculado}')
         self.assertEqual(y_esperado, round(y_calculado),
-                         'valor real de y = %s' % y_calculado)
+                         f'valor real de y = {y_calculado}')
         self.assertEqual(status_esperado, passaro.status,
-                         '(x = %s, y = %s)' % (x_calculado, y_calculado))
+                         f'(x = {x_calculado}, y = {y_calculado})')
 
 
 class PassaroVermelhoTests(PassaroBaseTests):
@@ -269,7 +270,7 @@ class PassaroAmareloTests(PassaroBaseTests):
     def teste_velocidade_escalar(self):
         self.assertEqual(30, PassaroAmarelo.velocidade_escalar)
 
-    def teste_lacamento_vertical(self):
+    def teste_lancamento_vertical(self):
         """
         Tests de lançamento vertical. Nele, o passaro só se move verticalmente e sua posição y se matém contanstante
         :return:

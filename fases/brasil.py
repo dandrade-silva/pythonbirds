@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from placa_grafica_tkinter import rodar_fase
+from fase import Fase
+from atores import PassaroAmarelo, PassaroVermelho, Obstaculo, Porco
 from os import path
 import sys
 
@@ -6,15 +9,11 @@ project_dir = path.dirname(__file__)
 project_dir = path.join('..')
 sys.path.append(project_dir)
 
-from atores import PassaroAmarelo, PassaroVermelho, Obstaculo, Porco
-from fase import Fase
-from placa_grafica_tkinter import rodar_fase
 
 if __name__ == '__main__':
     fase = Fase(intervalo_de_colisao=10)
 
-
-    deltax_gambi=80
+    deltax_gambi = 80
     # Adicionar Pássaros Amarelos
     for i in range(100):
         fase.adicionar_passaro(PassaroAmarelo(30, 30))
@@ -38,7 +37,9 @@ if __name__ == '__main__':
     for i in range(1, n):
         fase.adicionar_porco(Porco(x0 + delta_x * i, meio + delta_y * i))
         fase.adicionar_porco(Porco(x0 + delta_x * i, meio - delta_y * i))
-        fase.adicionar_porco(Porco(x0 + (n + i - 1) * delta_x, meio + (n - i) * delta_y))
-        fase.adicionar_porco(Porco(x0 + (n + i - 1) * delta_x, meio + (i - n) * delta_y))
+        fase.adicionar_porco(
+            Porco(x0 + (n + i - 1) * delta_x, meio + (n - i) * delta_y))
+        fase.adicionar_porco(
+            Porco(x0 + (n + i - 1) * delta_x, meio + (i - n) * delta_y))
 
-    rodar_fase(fase)
+rodar_fase(fase)

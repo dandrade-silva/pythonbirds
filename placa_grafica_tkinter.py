@@ -15,17 +15,22 @@ root = Tk()
 
 IMAGES_PATH = path.dirname(__file__)
 IMAGES_PATH = path.join(IMAGES_PATH, 'images')
-PASSARO_VERMELHO = PhotoImage(file=path.join(IMAGES_PATH, "passaro_vermelho.gif"))
-PASSARO_AMARELHO = PhotoImage(file=path.join(IMAGES_PATH, "passaro_amarelo.gif"))
+PASSARO_VERMELHO = PhotoImage(file=path.join(
+    IMAGES_PATH, "passaro_vermelho.gif"))
+PASSARO_AMARELHO = PhotoImage(
+    file=path.join(IMAGES_PATH, "passaro_amarelo.gif"))
 PORCO = PhotoImage(file=path.join(IMAGES_PATH, "porco.gif"))
 PORCO_MORTO = PhotoImage(file=path.join(IMAGES_PATH, "porco_morto.gif"))
 OBSTACULO = PhotoImage(file=path.join(IMAGES_PATH, "obstaculo.gif"))
 TRANSPARENTE = PhotoImage(file=path.join(IMAGES_PATH, "transparente.gif"))
 BACKGROUND = PhotoImage(file=path.join(IMAGES_PATH, "background.gif"))
-PYTHONBIRDS_LOGO = PhotoImage(file=path.join(IMAGES_PATH, "python-birds-logo.gif"))
+PYTHONBIRDS_LOGO = PhotoImage(file=path.join(
+    IMAGES_PATH, "python-birds-logo.gif"))
 MENU = PhotoImage(file=path.join(IMAGES_PATH, "menu.gif"))
-VOCE_GANHOU = PhotoImage(file=path.join(IMAGES_PATH, "python-birds-voce-ganhou-popup.gif"))
-VOCE_PERDEU = PhotoImage(file=path.join(IMAGES_PATH, "python-birds-voce-perdeu-popup.gif"))
+VOCE_GANHOU = PhotoImage(file=path.join(
+    IMAGES_PATH, "python-birds-voce-ganhou-popup.gif"))
+VOCE_PERDEU = PhotoImage(file=path.join(
+    IMAGES_PATH, "python-birds-voce-perdeu-popup.gif"))
 
 CARACTER_PARA__IMG_DCT = {'V': PASSARO_VERMELHO,
                           'A': PASSARO_AMARELHO,
@@ -50,7 +55,7 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
     multiplicador_rebobinar = 20
 
     def _animar():
-        tempo_de_inicio_de_animacao=time.time()
+        tempo_de_inicio_de_animacao = time.time()
 
         nonlocal tempo
         nonlocal delta_t
@@ -60,7 +65,8 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
             tempo = 0
             delta_t /= -multiplicador_rebobinar
         if fase.status() != EM_ANDAMENTO:
-            camada_de_atores.create_image(162, 55, image=PYTHONBIRDS_LOGO, anchor=NW)
+            camada_de_atores.create_image(
+                162, 55, image=PYTHONBIRDS_LOGO, anchor=NW)
             camada_de_atores.create_image(54, 540, image=MENU, anchor=NW)
             if fase.status() == VITORIA:
                 img = VOCE_GANHOU
@@ -78,8 +84,10 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
             camada_de_atores.create_text(35, 493, text="%d°" % angulo)
             for ponto in fase.calcular_pontos(tempo):
                 plotar(camada_de_atores, ponto)
-            tempo_gasto_com_animacao= round((time.time() - tempo_de_inicio_de_animacao)*1000) # Trans
-            tempo_proxima_animacao = passo - tempo_gasto_com_animacao if passo>tempo_gasto_com_animacao else 1
+            tempo_gasto_com_animacao = round(
+                (time.time() - tempo_de_inicio_de_animacao)*1000)  # Trans
+            tempo_proxima_animacao = passo - \
+                tempo_gasto_com_animacao if passo > tempo_gasto_com_animacao else 1
             tela.after(tempo_proxima_animacao, _animar)
 
     def _ouvir_comandos_lancamento(evento):
@@ -102,7 +110,6 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
         if fase.acabou(tempo):
             delta_t *= -multiplicador_rebobinar
             _animar()
-
 
     def _jogar_novamente(event):
         return
@@ -143,7 +150,8 @@ def rodar_fase(fase):
 
 if __name__ == '__main__':
     fase = Fase(intervalo_de_colisao=32)
-    passaros = [PassaroVermelho(30, 30), PassaroAmarelo(30, 30), PassaroAmarelo(30, 30)]
+    passaros = [PassaroVermelho(30, 30), PassaroAmarelo(
+        30, 30), PassaroAmarelo(30, 30)]
     porcos = [Porco(750, 1), Porco(700, 1)]
     obstaculos = [Obstaculo(310, 100)]
 
